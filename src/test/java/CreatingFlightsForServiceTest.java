@@ -22,7 +22,7 @@ public class CreatingFlightsForServiceTest {
         return flightList;
     }
 
-    public List<Flight> createListForWaitingTimeMoreThanHours(Integer countValid, Integer countWrong, Integer waitingHours) {
+    public List<Flight> createListForWaitingTimeLessThanHours(Integer countValid, Integer countWrong, Integer waitingHours) {
         List<Flight> flightList = Stream.generate(this::createFlightWithWaitingTimeLessThanTwoHours)
                 .limit(countValid)
                 .collect(Collectors.toList());
@@ -34,7 +34,7 @@ public class CreatingFlightsForServiceTest {
         return flightList;
     }
 
-    public List<Flight> createListForWrongFlights(Integer countValid, Integer countWrong) {
+    public List<Flight> createListForRightFlights(Integer countValid, Integer countWrong) {
         List<Flight> flightList = Stream.generate(this::createFlightWithValidSegmentDateTime)
                 .limit(countValid)
                 .collect(Collectors.toList());

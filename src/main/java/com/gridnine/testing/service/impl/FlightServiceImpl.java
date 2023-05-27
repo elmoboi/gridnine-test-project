@@ -21,13 +21,13 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public List<Flight> getFlightsWaitingTimeMoreThanHours(List<Flight> flights, Integer hour) {
+    public List<Flight> getFlightsWaitingTimeLessThanHours(List<Flight> flights, Integer hour) {
         return flights.stream()
                 .filter(flight -> !hasSegmentsWaitingHourMoreThan(flight, hour)).collect(Collectors.toList());
     }
 
     @Override
-    public List<Flight> getWrongFlights(List<Flight> flights) {
+    public List<Flight> getRightFlights(List<Flight> flights) {
         return flights.stream()
                 .filter(flight -> flight.getSegments().stream().allMatch(segment -> segment.getArrivalDate().isAfter(segment.getDepartureDate()))).collect(Collectors.toList());
     }

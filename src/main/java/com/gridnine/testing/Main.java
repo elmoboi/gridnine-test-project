@@ -24,8 +24,8 @@ public class Main {
         }
 
         flightsDepartureTimeAfterNowList = flightService.getFlightsDepartureTimeAfterNow(flightList); //Убрать рейсы которые уже улетели (1 задание из списка правил)
-        flightsWrongList = flightService.getWrongFlights(flightList); //Убрать неправильные рейсы (2 задание из списка правил)
-        flightsWaitingTimeMoreThanHoursList = flightService.getFlightsWaitingTimeMoreThanHours(flightList, 2); //Убрать рейсы, пересадка которая длится более 2х часов (3 задание из списка правил)
+        flightsWrongList = flightService.getRightFlights(flightList); //Убрать неправильные рейсы (2 задание из списка правил)
+        flightsWaitingTimeMoreThanHoursList = flightService.getFlightsWaitingTimeLessThanHours(flightList, 2); //Убрать рейсы, пересадка которая длится более 2х часов (3 задание из списка правил)
 
         System.out.println("\n________Filtered flights rule 1________");
         for (Flight flight : flightsDepartureTimeAfterNowList) {

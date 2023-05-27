@@ -22,18 +22,18 @@ public class FlightServiceImplTest {
 
     @Test
     public void testGetFlightsWaitingTimeMoreThanHours() {
-        List<Flight> flights = creatingFlightsForServiceTest.createListForWaitingTimeMoreThanHours(2, 3, 3);
+        List<Flight> flights = creatingFlightsForServiceTest.createListForWaitingTimeLessThanHours(2, 3, 3);
 
-        List<Flight> result = flightService.getFlightsWaitingTimeMoreThanHours(flights, 2);
+        List<Flight> result = flightService.getFlightsWaitingTimeLessThanHours(flights, 2);
 
         assertEquals(2, result.size());
     }
 
     @Test
-    public void testGetWrongFlights() {
-        List<Flight> flights = creatingFlightsForServiceTest.createListForWrongFlights(1, 2);
+    public void testGetRightFlights() {
+        List<Flight> flights = creatingFlightsForServiceTest.createListForRightFlights(1, 2);
 
-        List<Flight> result = flightService.getWrongFlights(flights);
+        List<Flight> result = flightService.getRightFlights(flights);
 
         assertEquals(1, result.size());
     }
