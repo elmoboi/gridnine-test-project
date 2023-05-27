@@ -1,6 +1,5 @@
 package com.gridnine.testing.model;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,20 +15,6 @@ public class Flight {
 
     public List<Segment> getSegments() {
         return segments;
-    }
-
-    public LocalDateTime getEarliestDepartureDate() {
-        if(segments.isEmpty()) {
-            return null;
-        }
-
-        LocalDateTime earliestDepartureDate = segments.get(0).getDepartureDate();
-        for(Segment segment : segments) {
-            if(segment.getDepartureDate().isBefore(earliestDepartureDate)) {
-                earliestDepartureDate = segment.getDepartureDate();
-            }
-        }
-        return earliestDepartureDate;
     }
 
     @Override
