@@ -4,39 +4,45 @@ import com.gridnine.testing.model.Segment;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class CreatingFlightsForServiceTest {
 
     public List<Flight> createListForDepartureTimeAfterNowTest(Integer countValid, Integer countWrong) {
-        List<Flight> flightList = new ArrayList<>();
-        for (int i = 0; i < countValid; i++) {
-            flightList.add(createFlightWithDepartureAfterNow());
-        }
-        for (int i = 0; i < countWrong; i++) {
-            flightList.add(createFlightWithDepartureBeforeNow());
-        }
+        List<Flight> flightList = Stream.generate(this::createFlightWithDepartureAfterNow)
+                .limit(countValid)
+                .collect(Collectors.toList());
+
+        flightList.addAll(Stream.generate(this::createFlightWithDepartureBeforeNow)
+                .limit(countWrong)
+                .toList());
+
         return flightList;
     }
 
     public List<Flight> createListForWaitingTimeMoreThanHours(Integer countValid, Integer countWrong, Integer waitingHours) {
-        List<Flight> flightList = new ArrayList<>();
-        for (int i = 0; i < countValid; i++) {
-            flightList.add(createFlightWithWaitingTimeLessThanTwoHours());
-        }
-        for (int i = 0; i < countWrong; i++) {
-            flightList.add(createFlightWithWaitingTimeGreaterThanHours(waitingHours));
-        }
+        List<Flight> flightList = Stream.generate(this::createFlightWithWaitingTimeLessThanTwoHours)
+                .limit(countValid)
+                .collect(Collectors.toList());
+
+        flightList.addAll(IntStream.range(0, countWrong)
+                .mapToObj(i -> createFlightWithWaitingTimeGreaterThanHours(waitingHours))
+                .toList());
+
         return flightList;
     }
 
     public List<Flight> createListForWrongFlights(Integer countValid, Integer countWrong) {
-        List<Flight> flightList = new ArrayList<>();
-        for (int i = 0; i < countValid; i++) {
-            flightList.add(createFlightWithValidSegmentDateTime());
-        }
-        for (int i = 0; i < countWrong; i++) {
-            flightList.add(createFlightWithWrongSegmentDateTime());
-        }
+        List<Flight> flightList = Stream.generate(this::createFlightWithValidSegmentDateTime)
+                .limit(countValid)
+                .collect(Collectors.toList());
+
+        flightList.addAll(Stream.generate(this::createFlightWithWrongSegmentDateTime)
+                .limit(countWrong)
+                .toList());
+
         return flightList;
     }
 
