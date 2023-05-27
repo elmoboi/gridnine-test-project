@@ -1,6 +1,8 @@
 package com.gridnine.testing.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -10,7 +12,7 @@ public class Flight {
     private final List<Segment> segments;
 
     public Flight(final List<Segment> segs) {
-        segments = segs;
+        segments = Objects.requireNonNullElseGet(segs, ArrayList::new);
     }
 
     public List<Segment> getSegments() {

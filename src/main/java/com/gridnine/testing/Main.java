@@ -20,7 +20,7 @@ public class Main {
 
         System.out.println("______________All Flights______________");
         for (Flight flight : flightList) {
-            System.out.println("Полет:" + flight);
+            System.out.println("Flight:" + flight);
         }
 
         flightsDepartureTimeAfterNowList = flightService.getFlightsDepartureTimeAfterNow(flightList); //Убрать рейсы которые уже улетели (1 задание из списка правил)
@@ -29,17 +29,17 @@ public class Main {
 
         System.out.println("\n________Filtered flights rule 1________");
         for (Flight flight : flightsDepartureTimeAfterNowList) {
-            System.out.println("Полет:" + flight);
+            System.out.println("Flight:" + flight);
         }
 
         System.out.println("\n________Filtered flights rule 2________");
         for (Flight flight : flightsWrongList) {
-            System.out.println("Полет:" + flight);
+            System.out.println("Flight:" + flight);
         }
 
         System.out.println("\n________Filtered flights rule 3________");
         for (Flight flight : flightsWaitingTimeMoreThanHoursList) {
-            System.out.println("Полет:" + flight);
+            System.out.println("Flight:" + flight);
         }
     }
 }
