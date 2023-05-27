@@ -13,7 +13,7 @@ public class FlightServiceImplTest {
 
     @Test
     public void testGetFlightsDepartureTimeAfterNow() {
-        List<Flight> flights = creatingFlightsForServiceTest.createListForDepartureTimeAfterNowTest(2,1);
+        List<Flight> flights = creatingFlightsForServiceTest.createListForDepartureTimeAfterNowTest(2, 1);
 
         List<Flight> result = flightService.getFlightsDepartureTimeAfterNow(flights);
 
@@ -22,7 +22,7 @@ public class FlightServiceImplTest {
 
     @Test
     public void testGetFlightsWaitingTimeMoreThanHours() {
-        List<Flight> flights = creatingFlightsForServiceTest.createListForWaitingTimeMoreThanHours(2,3,3);
+        List<Flight> flights = creatingFlightsForServiceTest.createListForWaitingTimeMoreThanHours(2, 3, 3);
 
         List<Flight> result = flightService.getFlightsWaitingTimeMoreThanHours(flights, 2);
 
@@ -31,7 +31,7 @@ public class FlightServiceImplTest {
 
     @Test
     public void testGetWrongFlights() {
-        List<Flight> flights = creatingFlightsForServiceTest.createListForWrongFlights(1,2);
+        List<Flight> flights = creatingFlightsForServiceTest.createListForWrongFlights(1, 2);
 
         List<Flight> result = flightService.getWrongFlights(flights);
 
