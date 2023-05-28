@@ -16,6 +16,7 @@ public class FlightServiceImpl implements FlightService {
         if (flights == null) {
             return Collections.emptyList();
         }
+
         return flights.stream()
                 .filter(flight -> flight.getSegments()
                         .stream()
@@ -29,6 +30,7 @@ public class FlightServiceImpl implements FlightService {
         if (flights == null) {
             return Collections.emptyList();
         }
+
         return flights.stream()
                 .filter(flight -> !hasSegmentsWaitingHourMoreThan(flight, hour)).collect(Collectors.toList());
     }
@@ -38,6 +40,7 @@ public class FlightServiceImpl implements FlightService {
         if (flights == null) {
             return Collections.emptyList();
         }
+
         return flights.stream()
                 .filter(flight -> flight.getSegments().stream()
                         .allMatch(segment -> segment.getArrivalDate().isAfter(segment.getDepartureDate())))
